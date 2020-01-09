@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
-#include <queue>
+#include <stack>
 using namespace std;
 
 
-void dfs_aux(vector<vector<int>>& graph, int curr, bool* visited, queue<int>& topologicalSort) {
+void dfs_aux(vector<vector<int>>& graph, int curr, bool* visited, stack<int>& topologicalSort) {
     cout << curr << " ";
     visited[curr] = true;
     for(auto i = graph[curr].begin(); i != graph[curr].end(); i++) {
@@ -20,14 +20,14 @@ void dfs (vector<vector<int>> graph) {
     bool visited[n];
     for(int i = 0; i<n; i++) visited[i] = false;
     
-    queue<int> toplogicalSort;
+    stack<int> toplogicalSort;
 
     cout << "\nDepth first search of the graph: \n";
     dfs_aux(graph, 2, visited, toplogicalSort);
 
     cout << "\ntopological sort of the graph: \n";
     while(!toplogicalSort.empty()) {
-        cout << toplogicalSort.front() << " ";
+        cout << toplogicalSort.top() << " ";
         toplogicalSort.pop();
     }
 
